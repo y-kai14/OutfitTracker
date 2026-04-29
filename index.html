@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Outfit Tracker</title>
+    <link rel="stylesheet" href="./styles.css">
+  </head>
+  <body>
+    <div class="header">
+      <h1>Outfit Tracker</h1>
+      <div class="toolbar">
+        <span id="status" class="status"></span>
+      </div>
+    </div>
+    <div class="addItem">
+      <h2>アイテムの登録</h2>
+      <p>tops outers bottoms</p>
+      <form class="addItem1" id="addItemForm">
+        <div class="add">
+          <select name="category" id="itemCategory">
+            <option value="tops" selected>tops</option>
+            <option value="outers">outers</option>
+            <option value="bottoms">bottoms</option>
+          </select>
+          <input type="text" name="brand" id="itemBrand" placeholder="brand">
+          <input type="text" name="detail" id="itemDetail" placeholder="detail">
+          <select name="color" id="itemColor">
+            <option value="black" selected>black</option>
+            <option value="white">white</option>
+            <option value="gray">gray</option>
+            <option value="red">red</option>
+            <option value="blue">blue</option>
+            <option value="yellow">yellow</option>
+            <option value="green">green</option>
+            <option value="purple">purple</option>
+            <option value="pink">pink</option>
+            <option value="brown">brown</option>
+            <option value="others">others</option>
+          </select>
+          <select name="size" id="itemSize">
+            <option value="large">large</option>
+            <option value="medium" selected>medium</option>
+            <option value="small">small</option>
+          </select>
+          <select name="length" id="itemLength">
+            <option value="long">long</option>
+            <option value="medium" selected>medium</option>
+            <option value="short">short</option>
+          </select>
+        </div>
+        <input type="submit" value="登録">
+      </form>
+
+      <p>shoes</p>
+      <form class="addItem2" id="addShoesForm">
+        <div class="add">
+          <input type="text" name="brand" id="shoesBrand" placeholder="brand">
+          <input type="text" name="detail" id="shoesDetail" placeholder="detail">
+          <select name="color" id="shoesColor">
+            <option value="black" selected>black</option>
+            <option value="white">white</option>
+            <option value="gray">gray</option>
+            <option value="red">red</option>
+            <option value="blue">blue</option>
+            <option value="yellow">yellow</option>
+            <option value="green">green</option>
+            <option value="purple">purple</option>
+            <option value="pink">pink</option>
+            <option value="brown">brown</option>
+            <option value="others">others</option>
+          </select>
+        </div>
+        <input type="submit" value="登録">
+      </form>
+
+      <p>purfumes others</p>
+      <form class="addItem3" id="addPerfumeForm">
+        <div class="add">
+          <select name="category" id="perfumeCategory">
+            <option value="perfume" selected>perfume</option>
+            <option value="others">others</option>
+          </select>
+          <input type="text" name="brand" id="perfumeBrand" placeholder="brand">
+          <input type="text" name="detail" id="perfumeDetail" placeholder="detail">
+        </div>
+        <input type="submit" value="登録">
+      </form>
+    </div>
+
+    <div class="addOutfit">
+      <h2>コーデの登録</h2>
+      <form id="addOutfitForm">
+        <input type="text" name="detail" id="outfitDetail" placeholder="detail">
+        <div class="add">
+          <select name="tops" id="topsSelect">
+          <option value="">tops</option>
+          <!-- JSで登録済みアイテムを挿入 -->
+          </select>
+          <select name="outers" id="outersSelect">
+          <option value="">outers</option>
+          <!-- JSで登録済みアイテムを挿入 -->
+          </select>
+          <select name="bottoms" id="bottomsSelect">
+          <option value="">bottoms</option>
+          <!-- JSで登録済みアイテムを挿入 -->
+          </select>
+          <select name="shoes" id="shoesSelect">
+          <option value="">shoes</option>
+          <!-- JSで登録済みアイテムを挿入 -->
+          </select>
+          <select name="others" id="othersSelect">
+          <option value="">others</option>
+          <!-- JSで登録済みアイテムを挿入 -->
+          </select>
+        </div>
+        <input type="submit" value="登録">
+      </form>
+    </div>
+
+    <div class="wear">
+      <div class="wearOutfit">
+        <h2>コーデの記録</h2>
+        <form id="wearOutfitForm">
+          <label>日付</label>
+          <input type="date" name="wearDate" id="wearOutfitDate">
+          <select name="outfits" id="wearOutfitSelect">
+            <option value="">outfits</option>
+            <!-- JSで登録済みコーデを挿入 -->
+          </select>
+          <input type="submit" value="着用">
+        </form>
+      </div>
+      <div class="wearPerfume">
+        <h2>香水の記録</h2>
+        <form id="wearPerfumeForm">
+          <label>日付</label>
+          <input type="date" name="wearDate" id="wearPerfumeDate">
+          <select name="perfumes" id="wearPerfumeSelect">
+            <option value="">perfumes</option>
+            <!-- JSで登録済み香水を挿入 -->
+          </select>
+          <input type="submit" value="着用">
+        </form>
+      </div>
+    </div>
+
+    <div class="history">
+      <div class="outfitHistory">
+        <h2>コーデの履歴</h2>
+        <ul id="outfitHistoryList">
+          <!-- JSで直近１週間の着用履歴を挿入 -->
+        </ul>
+      </div>
+      <div class="perfumeHistory">
+        <h2>香水の履歴</h2>
+        <ul id="perfumeHistoryList">
+          <!-- JSで直近１週間の着用履歴を挿入 -->
+        </ul>
+      </div>
+    </div>
+    <script src="./app.js"></script>
+  </body>
+</html>

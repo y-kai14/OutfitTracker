@@ -1,0 +1,245 @@
+/*
+  テーマカラーと共通変数
+  - ここで定義したCSS変数は全体で再利用
+  - 色味を変える場合はこのブロックだけ編集すればOK
+  - 背景/文字/アクセント/境界線の役割を明確に分ける
+*/
+:root {
+  color-scheme: light;
+  --bg: #f6f7fb;
+  --card: #ffffff;
+  --text: #1f2937;
+  --muted: #6b7280;
+  --accent: #1f2937;
+  --border: #e5e7eb;
+}
+
+/*
+  余白計算を一貫させる
+  - paddingやborderを含めた幅・高さ計算に統一
+  - 画面のズレを防止
+*/
+* {
+  box-sizing: border-box;
+}
+
+/*
+  全体レイアウト
+  - 背景画像 + 単色を重ねる
+  - 文字色とフォントを統一
+  - 余白でUIの呼吸を確保
+*/
+body {
+  margin: 0;
+  padding: 24px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans JP", sans-serif;
+  background: var(--bg) url("./back.png") center / cover no-repeat fixed;
+  color: var(--text);
+}
+
+/*
+  ヘッダー
+  - 左にアプリ名、右にステータス
+  - 可変幅でも整列するようflex設定
+*/
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+/*
+  ステータス表示領域
+  - ボタン群やメッセージを横並び
+  - 画面幅に応じて折り返し
+*/
+.toolbar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+/*
+  ボタン共通
+  - 送信用inputとbuttonを同じ見た目に統一
+  - 角丸とアクセントカラーで視認性UP
+*/
+button,
+input[type="submit"] {
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+button:hover,
+input[type="submit"]:hover {
+  opacity: 0.9;
+}
+
+.importLabel {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 8px 12px;
+  cursor: pointer;
+  color: var(--text);
+  font-weight: 600;
+}
+
+.importLabel input {
+  display: none;
+}
+
+/*
+  ステータスの文字色
+  - 強調しすぎないグレー
+  - 状態メッセージの可読性を確保
+*/
+.status {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+/*
+  セクションカード
+  - 白背景に少し透過を入れて背景画像を見せる
+  - 角丸 + 影でカード感を強調
+*/
+.addItem,
+.addOutfit,
+.wear,
+.history {
+  background: rgba(255, 255, 255, 0.82);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 20px;
+  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.05);
+}
+
+/*
+  フォームの並び
+  - gridで縦方向の間隔を一定化
+  - フォーム同士の余白も揃える
+*/
+.addItem form,
+.addOutfit form,
+.wear form {
+  display: grid;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+/*
+  入力系の見た目を統一
+  - input/select/dateの高さと枠線を揃える
+  - 最低幅を設定し崩れを防止
+*/
+.addItem input[type="text"],
+.addOutfit input[type="text"],
+select,
+input[type="date"] {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 8px 10px;
+  min-width: 180px;
+  height: 38px;
+}
+
+/*
+  複数選択も高さを合わせる
+  - デフォルトだと高さが大きくなりがち
+  - 単一selectと同じ高さに統一
+*/
+select[multiple] {
+  height: 38px;
+}
+
+/*
+  記録エリアの2カラム
+  - 画面幅に応じて自動で列数を調整
+  - 最小幅を確保して読みやすさ維持
+*/
+.wear {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+/*
+  履歴エリアの2カラム
+  - 記録エリアと同じレイアウトで統一感
+*/
+.history {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+/*
+  リストの初期化
+  - ブラウザ標準の余白/マーカーをリセット
+*/
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/*
+  履歴アイテム
+  - 区切り線で視認性を上げる
+  - 最後の項目は線を消す
+*/
+li {
+  padding: 8px 10px;
+  border-bottom: 1px solid var(--border);
+}
+
+li:last-child {
+  border-bottom: none;
+}
+
+/*
+  見出しの余白
+  - 見出しの下にだけ余白
+  - セクションタイトルの統一感を維持
+*/
+h1, h2 {
+  margin: 0 0 12px;
+}
+
+/*
+  アプリ名の色を白に
+  - 背景画像上でも読みやすくする
+*/
+.header h1 {
+  color: #ffffff;
+}
+
+/*
+  補足テキスト
+  - 見出しと区別するため薄い色
+*/
+p {
+  color: var(--muted);
+}
+
+/*
+  入力行の並び（既存のまま）
+  - 今はflex指定がないため影響は少ない
+  - 将来レイアウトを組む時のフック用
+*/
+.add {
+  justify-content: start;
+}
