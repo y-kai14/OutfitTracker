@@ -195,7 +195,13 @@ const renderOptions = (selectEl, items) => {
   items.forEach((item) => {
     const option = document.createElement("option");
     option.value = item.id;
-    const fallback = `${item.brand ?? ""} ${item.detail ?? ""}`.trim();
+    const parts = [];
+    if (item.brand) parts.push(item.brand);
+    if (item.detail) parts.push(item.detail);
+    if (item.color) parts.push(item.color);
+    if (item.size) parts.push(item.size);
+    if (item.length) parts.push(item.length);
+    const fallback = parts.join(" ") || item.id;
     const label = (item.label ?? fallback) || item.id;
     option.textContent = label;
     selectEl.appendChild(option);
